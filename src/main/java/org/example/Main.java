@@ -3,6 +3,7 @@ package org.example;
 import java.util.Scanner;
 // import org.example.Product;
 import org.example.DoublyLinkedList.DoublyLinkedList;
+import org.example.util.Sorter;
 
 public class Main {
     // int menu(){
@@ -20,7 +21,12 @@ public class Main {
     // }
     public static void main(String[] args) {
         DoublyLinkedList dbl = new DoublyLinkedList();
-        // Product prod = new Product("tomate", 8);
+        Product prod = new Product("tomate", 8);
+        Product prod2 = new Product("abacate", 2);
+
+        dbl.add(prod);
+        dbl.add(prod2);
+        Sorter.sortDoublyLinkedList(dbl);
         System.out.println(dbl);
     }
 }

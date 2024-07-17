@@ -1,6 +1,6 @@
 package org.example;
 
-public class Product {
+public class Product implements Comparable<Product> {
     private String name;
     private int amount;
 
@@ -26,4 +26,8 @@ public class Product {
     }
 
 
+    @Override
+    public int compareTo(Product o) {
+        return this.getName().compareTo(o.getName());
+    }
 }
