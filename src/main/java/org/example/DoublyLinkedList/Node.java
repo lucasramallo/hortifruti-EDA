@@ -1,20 +1,22 @@
 package org.example.DoublyLinkedList;
 
+import org.example.Product;
+
 public class Node {
-    private int value;
+    private Product value;
     private Node next;
     private Node previous;
 
-    public Node(int object, Node next) {
+    public Node(Product object, Node next) {
         this.value = object;
         this.next = next;
     }
 
-    public int getValue() {
+    public Product getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(Product value) {
         this.value = value;
     }
 
@@ -36,10 +38,10 @@ public class Node {
 
     @Override
     public String toString() {
-        String nextNodeStr = (this.next != null) ? "Next value: " + this.next.getValue() : "Next value: " + null;
-        String previousNodeStr = (this.previous != null) ? "previous: " + this.previous.getValue() : "previous: " + null;
+        String nextNodeStr = (this.next != null) ? "Next value: " + this.next.getValue().getName() : "Next value: " + null;
+        String previousNodeStr = (this.previous != null) ? "previous: " + this.previous.getValue().getName() : "previous: " + null;
         return "Node{" +
-                "value = " + value +
+                "value = " + value.getName() +
                 ", " + previousNodeStr +
                 ", " + nextNodeStr +
                 '}';

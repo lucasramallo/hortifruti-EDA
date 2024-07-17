@@ -1,5 +1,7 @@
 package org.example.DoublyLinkedList;
 
+import org.example.Product;
+
 public class DoublyLinkedList {
     private Node head;
     private Node tail;
@@ -10,7 +12,7 @@ public class DoublyLinkedList {
         this.tail = null;
     }
 
-    public boolean add(int index, int value) {
+    public boolean add(int index, Product value) {
         if(index <= this.size && index >= 0) {
             Node node = new Node(value, null);
 
@@ -58,7 +60,7 @@ public class DoublyLinkedList {
         return false;
     }
 
-    public void add(int value) {
+    public void add(Product value) {
         Node node = new Node(value, null);
         if(this.size == 0) {
             this.head = node;
@@ -107,7 +109,7 @@ public class DoublyLinkedList {
         return node;
     }
 
-    public int get(int index) {
+    public Product get(int index) {
         Node node = this.head;
         for(int i = 0; i < index; i++) {
             node = node.getNext();
@@ -134,5 +136,18 @@ public class DoublyLinkedList {
 
     public int size() {
         return this.size;
+    }
+
+    @Override
+    public String toString(){
+        Node nod = this.head;
+        String str = "";
+
+        while(nod != null){
+            str += nod.getValue().getName() + "\n";
+            nod = nod.getNext();
+        }
+
+        return str;
     }
 }
