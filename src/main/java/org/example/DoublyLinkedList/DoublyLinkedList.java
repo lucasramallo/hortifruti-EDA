@@ -144,7 +144,7 @@ public class DoublyLinkedList {
         String str = "";
 
         while(nod != null){
-            str += nod.getValue().getName() + "\n";
+            str += nod.getValue().getName() + ": " + nod.getValue().getAmount() + "\n";
             nod = nod.getNext();
         }
 
