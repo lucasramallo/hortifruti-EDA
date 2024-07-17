@@ -27,6 +27,12 @@ public class DoublyLinkedList {
                 return true;
             }
 
+            if(index == 0 && this.head == null) {
+                this.head = node;
+                this.size++;
+                return true;
+            }
+
             if(index == 0) {
                 node.setNext(head);
                 node.setPrevious(null);
@@ -73,12 +79,16 @@ public class DoublyLinkedList {
     }
 
     public boolean remove(int index) {
-        if(index == 0) {
+        if(index == 0 && this.size > 1) {
             Node nextNode = getNode(1);
             this.head.setNext(null);
             nextNode.setPrevious(null);
             this.head = nextNode;
 
+            this.size--;
+            return true;
+        } else if(index == 0){
+            this.head = null;
             this.size--;
             return true;
         }
@@ -88,12 +98,14 @@ public class DoublyLinkedList {
         Node nextNode = getNode(index + 1);
 
         previousNode.setNext(nextNode);
-        nextNode.setPrevious(previousNode);
+        if(nextNode != null) {
+            nextNode.setPrevious(previousNode);
+        }
 
         nodeToRemove.setNext(null);
         nodeToRemove.setPrevious(null);
 
-        size--;
+        this.size--;
         return true;
     }
 
