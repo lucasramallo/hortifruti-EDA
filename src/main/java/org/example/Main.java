@@ -20,7 +20,9 @@ public class Main {
     // }
     public static void main(String[] args) {
         DoublyLinkedList dbl = new DoublyLinkedList();
-        // Product prod = new Product("tomate", 8);
+         Product prod = new Product("tomate", 8);
+
+         dbl.add(prod);
         System.out.println(dbl);
     }
 }
