@@ -36,7 +36,8 @@ public class Main {
         dbl.add(prod);
         dbl.add(prod2);
         dbl.add(prod3);
-        Sorter.sortDoublyLinkedList(dbl);
+
+//        Sorter.sortDoublyLinkedList(dbl);
         System.out.println(dbl);
     }
 }
