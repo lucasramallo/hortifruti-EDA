@@ -150,8 +150,8 @@ public class DoublyLinkedList {
 
         System.out.println();
         while(nod != null){
-            System.out.println(nod);
-            // str += nod.getValue().getName() + ": " + nod.getValue().getAmount() + "\n";
+            // System.out.println(nod); // Mostra nodos previous e next
+            str += nod.getValue().getName() + ": " + nod.getValue().getAmount() + "\n";
             nod = nod.getNext();
         }
 
