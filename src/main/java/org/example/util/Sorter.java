@@ -10,7 +10,7 @@ public class Sorter {
                 if(lista.get(j).compareTo(lista.get(j - 1)) < 0) {
                     Product value1 = lista.get(j);
                     Product value2 = lista.get(j - 1);
-
+                    
                     lista.remove(j);
                     lista.remove(j - 1);
 

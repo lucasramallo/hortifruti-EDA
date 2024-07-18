@@ -31,10 +31,14 @@ public class Main {
         Product prod = new Product("tomate", 8);
         Product prod2 = new Product("abacate", 2);
         Product prod3 = new Product("jiló", 7);
+        Product prod4 = new Product("abobrinha", 3); 
+        Product prod5 = new Product("kiwi", 5);
 
         dbl.add(prod);
         dbl.add(prod2);
         dbl.add(prod3);
+        dbl.add(prod4);
+        dbl.add(prod5);
         Sorter.sortDoublyLinkedList(dbl);
         System.out.println(dbl);
     }

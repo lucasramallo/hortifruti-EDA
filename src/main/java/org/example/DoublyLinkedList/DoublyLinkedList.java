@@ -16,49 +16,36 @@ public class DoublyLinkedList {
         if(index <= this.size && index >= 0) {
             Node node = new Node(value, null);
 
-            if(index == 0 && this.size > 0) {
-                node.setNext(this.head);
-                this.head.setPrevious(node);
-                this.head.setNext(node);
-                this.head = node;
-
-                this.size++;
-
-                return true;
-            }
-
-            if(index == 0 && this.head == null) {
-                this.head = node;
-                this.size++;
-                return true;
-            }
-
             if(index == 0) {
-                node.setNext(head);
-                node.setPrevious(null);
-                this.head = node;
+                if(this.size > 0) {
+                    node.setNext(this.head);
+                    this.head.setPrevious(node);
+                    this.head = node;
+                } else {
+                    this.head = node;
+                    this.tail = node;
+                }
+                this.size++;
+                return true;
+            } 
+
+            if(index == this.size) {
+                node.setPrevious(this.tail);
+                this.tail.setNext(node);
                 this.tail = node;
                 this.size++;
-
                 return true;
             }
 
-            Node previousNode = getNode(index -1);
-            Node oldNode = getNode(index);
+            Node previousNode = getNode(index - 1);
+            Node nextNode = getNode(index);
 
-            if(oldNode == null) {
-                previousNode.setNext(node);
-                node.setPrevious(previousNode);
-                this.tail = node;
-                this.size++;
-
-                return true;
-            }
-
-            previousNode.setNext(node);
-            node.setNext(oldNode);
+            node.setNext(nextNode);
             node.setPrevious(previousNode);
-            oldNode.setPrevious(node);
+            previousNode.setNext(node);
+            if (nextNode != null) {
+                nextNode.setPrevious(node);
+            }
 
             this.size++;
             return true;
@@ -70,25 +57,34 @@ public class DoublyLinkedList {
         Node node = new Node(value, null);
         if(this.size == 0) {
             this.head = node;
+            this.tail = node;
         } else {
-            this.tail.setNext(node);
-            node.setPrevious(this.tail);
+            Node previous = this.tail;
+            this.tail = node;
+            node.setPrevious(previous);
+            previous.setNext(this.tail);
         }
-        this.tail = node;
         this.size++;
     }
 
     public boolean remove(int index) {
-        if(index == 0 && this.size > 1) {
-            Node nextNode = getNode(1);
-            this.head.setNext(null);
-            nextNode.setPrevious(null);
-            this.head = nextNode;
-
-            this.size--;
-            return true;
-        } else if(index == 0){
-            this.head = null;
+        if(index == 0){
+            if(this.size > 1) {
+                Node nextNode = getNode(1);
+                nextNode.setPrevious(null);
+                this.head = nextNode;
+                this.size--;
+                return true;
+            } else {
+                this.head = null;
+                this.tail = null;
+                this.size--;
+                return true;
+            }
+        } else if(index == this.size - 1){
+            Node previousNode = this.tail.getPrevious(); 
+            previousNode.setNext(null);
+            this.tail = previousNode;
             this.size--;
             return true;
         }
@@ -101,9 +97,6 @@ public class DoublyLinkedList {
         if(nextNode != null) {
             nextNode.setPrevious(previousNode);
         }
-
-        nodeToRemove.setNext(null);
-        nodeToRemove.setPrevious(null);
 
         this.size--;
         return true;
@@ -155,8 +148,10 @@ public class DoublyLinkedList {
         Node nod = this.head;
         String str = "";
 
+        System.out.println();
         while(nod != null){
-            str += nod.getValue().getName() + ": " + nod.getValue().getAmount() + "\n";
+            System.out.println(nod);
+            // str += nod.getValue().getName() + ": " + nod.getValue().getAmount() + "\n";
             nod = nod.getNext();
         }
 
