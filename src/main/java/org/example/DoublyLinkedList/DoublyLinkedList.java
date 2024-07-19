@@ -102,6 +102,8 @@ public class DoublyLinkedList {
         return true;
     }
 
+
+
     public Node getNode(int index) {
         Node node = this.head;
         for(int i = 0; i < index; i++) {
@@ -121,6 +123,48 @@ public class DoublyLinkedList {
         }
 
         return node.getValue();
+    }
+
+    public Product getByName(String name) {
+        Node node = this.head;
+        for(int i = 0; i < size - 1; i++) {
+            if((node.getValue().getName().toUpperCase()).equals(name)) {
+                return node.getValue();
+            }
+
+            node = node.getNext();
+        }
+
+        throw new RuntimeException("Elemento não encontrado!");
+    }
+
+    public Node getNodeByName(String name) {
+        Node node = this.head;
+        for(int i = 0; i < size; i++) {
+            node = node.getNext();
+
+            if((node.getValue().getName().toUpperCase()).equals(name)) {
+                return node;
+            }
+        }
+
+        return node;
+    }
+
+    public int getIndexNodeByName(String name) {
+        Node node = this.head;
+        int counter = 0;
+        for(int i = 0; i < size - 1; i++) {
+
+            if((node.getValue().getName().toUpperCase()).equals(name)) {
+                return counter;
+            }
+
+            node = node.getNext();
+            counter++;
+        }
+
+        return -1;
     }
 
     private void setHead(Node node) {

@@ -25,6 +25,16 @@ public class Product implements Comparable<Product> {
         this.amount = amount;
     }
 
+    public void withdraw(int amount) {
+        if(amount > getAmount()) {
+            int currentAmount = getAmount();
+            setAmount(0);
+            System.out.println("Não há a quantidade solicitada, foram retirados apenas " + currentAmount);
+        } else {
+            setAmount(getAmount() - amount);
+        }
+    }
+
 
     @Override
     public int compareTo(Product o) {

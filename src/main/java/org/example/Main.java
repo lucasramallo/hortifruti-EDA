@@ -18,7 +18,7 @@ public class Main {
                     ListProducts.execute(list);
                     break;
                 case 3:
-                    break;
+                    RemoveProduct.execute(list);
                 case 4:
                     break;
                 default:
@@ -45,6 +45,7 @@ public class Main {
 
         return option;
     }
+
     public static void main(String[] args) {
         DoublyLinkedList dbl = new DoublyLinkedList();
         Product prod = new Product("TOMATE", 8);
