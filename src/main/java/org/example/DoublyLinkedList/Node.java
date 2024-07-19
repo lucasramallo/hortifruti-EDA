@@ -40,10 +40,9 @@ public class Node {
     public String toString() {
         String nextNodeStr = (this.next != null) ? "Next value: " + this.next.getValue().getName() : "Next value: " + null;
         String previousNodeStr = (this.previous != null) ? "previous: " + this.previous.getValue().getName() : "previous: " + null;
-        return "Node{" +
-                "value = " + value.getName() +
-                ", " + previousNodeStr +
-                ", " + nextNodeStr +
+        return "Node{" + previousNodeStr +
+                ",  " + "value: " + value.getName() +
+                ",  " + nextNodeStr +
                 '}';
     }
 
