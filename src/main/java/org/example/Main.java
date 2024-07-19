@@ -19,7 +19,9 @@ public class Main {
                     break;
                 case 3:
                     RemoveProduct.execute(list);
+                    break;
                 case 4:
+                    VerifyIfExist.execute(list);
                     break;
                 default:
                     System.out.println("[ERRO]: Opção inválida!");

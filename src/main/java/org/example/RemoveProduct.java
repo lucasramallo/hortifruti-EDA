@@ -13,15 +13,18 @@ public class RemoveProduct {
         System.out.print("Quantidade: ") ;
         int prodAmount = input.nextInt();
 
-        Product product = list.getByName(prodName);
+        try {
+            Product product = list.getByName(prodName);
 
-        product.withdraw(prodAmount);
+            product.withdraw(prodAmount);
 
-        if(product.getAmount() == 0) {
-            System.out.println(product.getAmount() + "dento");
-            int productToRemoveIndex = list.getIndexNodeByName(prodName);
-            list.remove(productToRemoveIndex);
+            if(product.getAmount() == 0) {
+                int productToRemoveIndex = list.getIndexNodeByName(prodName);
+                list.remove(productToRemoveIndex);
+            }
+            System.out.println("Produto retirado!");
+        } catch (RuntimeException e) {
+            System.out.println("Produto não encontrado!");
         }
-        System.out.println("Produto retirado!");
     }
 }
