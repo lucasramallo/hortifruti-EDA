@@ -10,8 +10,15 @@ public class AddProduct {
         String prodName = input.nextLine().trim().toUpperCase();   
         System.out.print("Quantidade: ") ;
         int prodAmount = input.nextInt();
-        // Verificar se existe o produto na lista. se não:
-        list.add(new Product(prodName, prodAmount));    
-        System.out.println("Produto adicionado com sucesso!");
+
+        try {
+            Product existingProduct = list.getByName(prodName);
+            existingProduct.setAmount(existingProduct.getAmount() + prodAmount);
+
+            System.out.println("Produto adicionado com sucesso!");
+        } catch (RuntimeException e) {
+            list.add(new Product(prodName, prodAmount));
+            System.out.println("Produto adicionado com sucesso!");
+        }
     }
 }
